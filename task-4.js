@@ -1,19 +1,56 @@
-// Создать функцию угадай число. Она принимает число от 1-10 (обязательно проверить что число не больше 10 и не меньше 0).
-// Генерирует рандомное число от 1-10 и сравнивает с заданным числом если они совпали то возвращает “Вы выиграли” если нет то “Вы не угадали ваше число 8 а выпало число 5”.
-// Числа в строке указаны как пример вы подставляете реальные числа.
+// Создайте модуль “калькулятор”, который умеет складывать, умножать, вычитать, делить и возводить в степень.
+// Конечное значение округлить до двух знаков после точки (значение должно храниться в обычной переменной, не в this).
 
-let rand;
-function randomInteger(min, max) {
-  rand = min - 0.5 + Math.random() * (max - min + 1);
-  rand = Math.round(rand);
+const calculateModul = (function () {
+  let number;
 
-  let number = prompt("Введите любое число", 0);
-  if (rand == number) {
-    console.log("Вы выиграли");
-  } else
-    console.log(
-      "Вы не угадали ваше число " + number + ", а выпало число " + rand
-    );
-}
+  function setNumber(num) {
+    return (number = num);
+  }
 
-randomInteger(1, 10);
+  function addNumber(num) {
+    return (number += num);
+  }
+
+  function multiplyNumber(num) {
+    return (number *= num);
+  }
+
+  function subtractNumber(num) {
+    return (number -= num);
+  }
+
+  function divideNumber(num) {
+    return (number /= num);
+  }
+
+  function degreeNumber(num) {
+    number = Math.pow(number, num);
+
+    return number;
+  }
+
+  function getNumber() {
+    number = number.toFixed(2);
+
+    return number;
+  }
+
+  return {
+    setNumber,
+    addNumber,
+    multiplyNumber,
+    subtractNumber,
+    divideNumber,
+    degreeNumber,
+    getNumber,
+  };
+})();
+
+console.log(calculateModul.setNumber(10));
+console.log(calculateModul.addNumber(5));
+console.log(calculateModul.multiplyNumber(2));
+console.log(calculateModul.subtractNumber(10));
+console.log(calculateModul.divideNumber(4));
+console.log(calculateModul.degreeNumber(3));
+console.log(calculateModul.getNumber());

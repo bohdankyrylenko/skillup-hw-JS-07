@@ -1,8 +1,18 @@
-// Создать функцию, которая принимает строку и возвращает строку-перевертыш: reverseString(‘test’) // “tset”.
-let str = "tset";
-function reverseString(word) {
-  let rezult = word.split("").reverse().join("");
-  return rezult;
+// Реализовать функцию, которая умножает и умеет запоминать возвращаемый результат между вызовами
+
+function TimeCreate(FirstTime) {
+  let result = firstTime;
+
+  return function (SecondTime) {
+    result *= SecondTime;
+
+    return result;
+  };
 }
-reverseString(str);
-console.log(str);
+
+const Time = TimeCreate(2);
+
+console.log(Time(2));
+console.log(Time(1));
+console.log(Time(3));
+console.log(Time(10));

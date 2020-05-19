@@ -1,13 +1,26 @@
-//Создать функцию multiply, которая будет принимать любое количество чисел и возвращать //их произведение: multiply(1,2,3) = 6 (123)
-//Если нет ни одного аргумента, вернуть ноль: multiply() // 0
+//Создайте функцию которая бы умела делать:
+// minus(10)(6); // 4
+// minus(5)(6); // -1
+// minus(10)(); // 10
+// minus()(6); // -6
+// minus()(); // 0
 
-function multiply(...args) {
-	if(args.length === 0){
-		return "0";
-	}else{
-		let rezult = args.reduce((a,b)=>a*b);
-		return rezult;
-	}
-	
+function minus(a) {
+  if (a === undefined) {
+    a = 0;
+  }
+
+  return function (b) {
+    if (b === undefined) {
+      b = 0;
+    }
+
+    return a - b;
+  };
 }
-console.log(multiply(1,2,3));
+
+console.log(minus(10)(6));
+console.log(minus(5)(6));
+console.log(minus(10)(0));
+console.log(minus()(6));
+console.log(minus()());
